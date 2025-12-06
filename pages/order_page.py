@@ -162,3 +162,4 @@ class OrderPage(BasePage):
     @allure.step('Нажать на кнопку "Посмотреть статус"')
     def click_see_status(self):
         self.click(self.SUCCESS_BUTTON_STATUS)
+        
