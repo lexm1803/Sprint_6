@@ -2,6 +2,5 @@ __pycache__/
 *.pyc
 .env
 venv/
-allure-results/
-allure-report/
 .pytest_cache/
+geckodriver.exe

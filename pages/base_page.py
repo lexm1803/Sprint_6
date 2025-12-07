@@ -97,7 +97,7 @@ class BasePage:
     def scroll_to_element(self, locator):
         try:
             element = self.find_element(locator)
-            self.driver.execut_script("arguments[0].scrollIntoView({block: 'center'});", element)
+            self.driver.execute_script("arguments[0].scrollIntoView({block: 'center'});", element)
 
         except Exception:
             self._attache_screenshot_on_failer('scroll_to_element')

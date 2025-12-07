@@ -33,7 +33,6 @@ class MainPage(BasePage):
 
     URL = 'https://qa-scooter.praktikum-services.ru/'
 
-    # Перенести в base
     @allure.step('Открыть главную страницу')
     def open(self):
         self.driver.get(self.URL)
@@ -72,7 +71,6 @@ class MainPage(BasePage):
         try:
             if self.is_element_visible(self.COOKIE_BANNER):
                 self.click(self.COOKIE_ACCEPT_BUTTON)
-                #TO DO: явное ожидание перенести в base?
                 self.wait.until(EC.invisibility_of_element_located(self.COOKIE_BANNER))
         except Exception:
             pass
@@ -123,7 +121,6 @@ class MainPage(BasePage):
         if index >= len(items):
             raise IndexError(f'Индекс {index} выходит за пределы списка вопросов {len(items)}')
         button = items[index].find_element(*self.FAQ_BUTTON)
-        # TO DO: создать метод вставки JS в консоль в base?
         self.driver.execute_script("arguments[0].scrollIntoView({block: 'center'});", button)
         self.driver.execute_script(
             "arguments[0].style.zIndex = '9999'; "
@@ -139,14 +136,12 @@ class MainPage(BasePage):
         if index >= len(items):
             raise IndexError(f'Индекс {index} выходит за пределы списка вопросов {len(items)}')
         panel = items[index].find_element(*self.FAQ_PANEL)
-        #TO DO: подумать над другой реализацией
         self.wait.until(
             lambda driver: panel.text.strip() != '', 
             message = f'Ответ №{index} пуст'
         )
         return panel.text.strip()
     
-    #TO DO: перенести в base?
     @allure.step('Ввести номер заказа в хэдере: {track_id}')
     def enter_track_id_in_header(self, track_id):
         self.send_keys(self.TRACK_INPUT_HEADER, track_id)

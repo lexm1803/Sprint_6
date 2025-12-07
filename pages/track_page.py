@@ -136,8 +136,6 @@ class TrackPage(BasePage):
     def click_cancel_succes_ok(self):
         self.click(self.CANCEL_SUCCESS_BUTTON_OK)
 
-#TO DO: подумать, куда перенести
-
     @allure.step('Нажать на логотип "Самокат"')
     def click_logo_scooter(self):
         self.click(MainPage.LOGO_SCOOTER)

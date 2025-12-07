@@ -1,10 +1,13 @@
 import pytest
-from allure import severity, severity_level
+import allure
 from data.order_data import FAQ_DATA
 
-@severity(severity_level.NORMAL)
+@allure.feature('Главная страница')
+@allure.story('Блок FAQ')
+@allure.severity(allure.severity_level.NORMAL)
 class TestFAQDropdown:
 
+    @allure.title('Проверка вопросов и ответов в блоке FAQ')
     @pytest.mark.parametrize(
             "index, questions, expected_answer", 
             [(i,q,a) for i, (q,a) in enumerate(FAQ_DATA)],

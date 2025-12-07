@@ -1,9 +1,12 @@
 import pytest
-from allure import severity, severity_level
+import allure
 
-@severity(severity_level.CRITICAL)
+@allure.feature('Главная страница')
+@allure.story('Smoke главной страницы сайта')
+@allure.severity(allure.severity_level.CRITICAL)
 class TestMainPage:
 
+    @allure.title('Проверка загрузки элементов на главной странице')
     def test_main_title_is_visible(self, main_page):
         main_page.open()
         assert main_page.is_loaded(), 'Главная страница не загружена'
@@ -14,3 +17,4 @@ class TestMainPage:
         assert main_page.is_visible_logo_yandex(), 'Логотип "Яндекс" не отображен'
         assert main_page.is_visible_how_it_work_title(), 'Заголовок "Как это работает" не оотображен'
         assert main_page.is_visible_faq_section_title(), 'Заголовок "Вопросы о важном" не отображен'
+        

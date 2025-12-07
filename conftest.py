@@ -12,6 +12,7 @@ from pages.track_page import TrackPage
 def driver():
     options = Options()
     options.add_argument('--headless')
+    options.binary_location = r"C:\Program Files\Mozilla Firefox\firefox.exe"
 
     service = Service(executable_path=GeckoDriverManager().install())
     driver = webdriver.Firefox(service=service, options=options)

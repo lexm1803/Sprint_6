@@ -136,7 +136,7 @@ class OrderPage(BasePage):
         self.click(self.MODAL_BUTTON_YES)
 
     @allure.step('Нажать кнопку "Нет" в модальном окне подтверждения заказа')
-    def confirm_order(self):
+    def cancel_order(self):
         self.click(self.MODAL_BUTTON_NO)
 
     @allure.step('Проверить, что модальное окно успешного заказа отображено')
