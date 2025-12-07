@@ -5,7 +5,7 @@ from selenium.webdriver.firefox.service import Service
 from webdriver_manager.firefox import GeckoDriverManager
 from pages.main_page import MainPage
 from pages.order_page import OrderPage
-from pages.track_pages import TrackPage
+from pages.track_page import TrackPage
 
 
 @pytest.fixture(scope='session')
@@ -35,5 +35,17 @@ def pages(driver):
     return {
         "main": MainPage(driver),
         "order": OrderPage(driver),
-        "track": TrackPage(driver)
+        "track": TrackPage(driver),
     }
+
+@pytest.fixture
+def main_page(driver):
+    return MainPage(driver)
+
+@pytest.fixture
+def order_page(driver):
+    return OrderPage(driver)
+
+@pytest.fixture
+def track_page(driver):
+    return TrackPage(driver)

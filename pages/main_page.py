@@ -34,10 +34,38 @@ class MainPage(BasePage):
     URL = 'https://qa-scooter.praktikum-services.ru/'
 
     # Перенести в base
-    @allure.step('Открыть страницу {self.URL}')
+    @allure.step('Открыть главную страницу')
     def open(self):
         self.driver.get(self.URL)
         self.accept_cookies_if_present()
+
+    @allure.step('Проверить наличие заголовка на главной странице')
+    def is_visible_main_title(self):
+        return self.is_element_visible(self.MAIN_TITLE)
+    
+    @allure.step('Проверить отображение описания под заголовком на главной странице')
+    def is_visible_main_sub_title(self):
+        return self.is_element_visible(self.MAIN_DESCRIPTION)
+    
+    @allure.step('Проверить отображение кнопки "Заказать" на странице')
+    def is_visible_button_order_on_the_page(self):
+        return self.is_element_visible(self.BUTTON_ORDER_ON_THE_PAGE)
+    
+    @allure.step('Проверить отображение логотипа "Самокат"')
+    def is_visible_logo_scooter(self):
+        return self.is_element_visible(self.LOGO_SCOOTER)
+    
+    @allure.step('Проверить отображение логотипа "Яндекс"')
+    def is_visible_logo_yandex(self):
+        return self.is_element_visible(self.LOGO_YANDEX)
+    
+    @allure.step('Проверить отображение заголовка "Как это работает"')
+    def is_visible_how_it_work_title(self):
+        return self.is_element_visible(self.HOW_IT_WORKS_TITLE)
+    
+    @allure.step('Проверить отображение заголовка "Вопросы о важном"')
+    def is_visible_faq_section_title(self):
+        return self.is_element_visible(self.FAQ_SECTION_TITLE)
 
     @allure.step('Принять cookie, если баннер отображен')
     def accept_cookies_if_present(self):
@@ -61,7 +89,7 @@ class MainPage(BasePage):
         self.click(self.BUTTON_ORDER_IN_THE_HEADER)
 
     @allure.step('Клик по кнопке "Заказать" на странице')
-    def click_order_button_top(self):
+    def click_order_button_in_pages(self):
         self.scroll_to_element(self.BUTTON_ORDER_ON_THE_PAGE)
         self.click(self.BUTTON_ORDER_ON_THE_PAGE)
 
